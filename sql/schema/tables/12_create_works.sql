@@ -1,0 +1,20 @@
+CREATE TABLE works (
+  id SERIAL PRIMARY KEY,
+  client_id BIGINT UNSIGNED NOT NULL,
+  FOREIGN KEY (client_id) REFERENCES clients(id),
+  area_id BIGINT UNSIGNED NOT NULL,
+  FOREIGN KEY (area_id) REFERENCES work_areas(id),
+  type_id BIGINT UNSIGNED NOT NULL,
+  FOREIGN KEY (type_id) REFERENCES work_types(id),
+  format_id BIGINT UNSIGNED NOT NULL,
+  FOREIGN KEY (format_id) REFERENCES work_formats(id),
+  urgency_id BIGINT UNSIGNED NOT NULL, 
+  FOREIGN KEY (urgency_id) REFERENCES work_urgency(id),
+  tariff_1_min NUMERIC(10, 2),
+  number_tasks INT,
+  payment NUMERIC(10, 2),
+  start_date DATE NOT NULL,
+  end_date DATE,
+  created_at DATE DEFAULT (CURRENT_DATE),
+  work_folder VARCHAR(20)
+);
